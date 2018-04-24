@@ -1,0 +1,17 @@
+<mat-form-field class="example-form-field">
+  <input matInput type="text" placeholder="Search" [(ngModel)]="currentFilterCriteria"/>
+  <button mat-button *ngIf="currentFilterCriteria" matSuffix mat-icon-button aria-label="Clear" (click)="currentFilterCriteria=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<div class="clients">
+  <div class="client" *ngFor="let client of getFilteredClients()" (click)="showDetails(client)" >
+    <img class="avatar" alt="photo" src="{{client.general?.avatar}}">
+
+    <div class="text">
+      <p class="name">{{client.general?.firstName}}</p>
+      <p class="profession">{{client.job?.title}}</p>
+    </div>
+  </div>
+</div>

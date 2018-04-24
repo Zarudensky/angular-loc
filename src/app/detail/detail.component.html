@@ -1,0 +1,37 @@
+<h1 *ngIf="!clientToShow">Please select the client from the list on the left</h1>
+
+<div class="client" *ngIf="clientToShow">
+  <button class="close"
+          mat-button matSuffix mat-icon-button aria-label="Clear"
+          (click)="this.clientToShow = !this.clientToShow">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="info">
+    <img class="avatar" alt="photo" src="{{clientToShow.general?.avatar}}">
+    <div class="general">
+      <h2>
+        <span>{{clientToShow?.general?.firstName}}</span>
+        <span>{{clientToShow?.general?.lastName}}</span>
+      </h2>
+
+      <div class="job">
+        <p class="company">{{clientToShow?.job?.company}}</p>
+        <p class="title">{{clientToShow?.job?.title}}</p>
+      </div>
+
+      <div class="contact">
+        <p class="email">{{clientToShow?.contact?.email}}</p>
+        <p class="phone">{{clientToShow?.contact?.phone}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="address">
+    <h3>Address:</h3>
+    <p class="street">{{clientToShow?.address?.street}}</p>
+    <p class="city">{{clientToShow?.address?.city}}</p>
+    <p class="zipCode">{{clientToShow?.address?.zipCode}}</p>
+    <p class="country">{{clientToShow?.address?.country}}</p>
+  </div>
+
+</div>
