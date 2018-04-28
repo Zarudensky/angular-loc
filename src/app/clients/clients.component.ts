@@ -27,9 +27,23 @@ export class ClientsComponent implements OnInit {
     if (this.currentFilterCriteria.length === 0) {
       return this.clients;
     } else {
-      return this.clients.filter(
-        c => c.general.firstName.toLowerCase().includes(this.currentFilterCriteria.toLowerCase()));
+      return this.clients.filter(c => this.searchFunction(c));
     }
+  }
+
+  private searchFunction(c: Client): boolean {
+    const searchCriteriaLowerCased = this.currentFilterCriteria.toLowerCase();
+    if (c.general.firstName.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.general.lastName.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.job.company.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.job.title.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.contact.email.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.contact.phone.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.address.street.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.address.city.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.address.zipCode.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    if (c.address.country.toLowerCase().includes(searchCriteriaLowerCased)) {return true; }
+    return false;
   }
 
   showDetails(client: Client) {
